@@ -31,3 +31,4 @@
 # 域名后缀匹配
 # DOMAIN-SUFFIX,tailscale.com
   DOMAIN-SUFFIX,teracloud.jp
+  DOMAIN-SUFFIX,steamcontent.com
