@@ -27,7 +27,7 @@
       {
         "tag": "cn_dns",
         "type": "udp",
-        "server": "114.114.114.114"
+        "server": "223.5.5.5"
       }
     ],
     "rules": [
