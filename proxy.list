@@ -10,7 +10,7 @@ DOMAIN-SUFFIX,clawcloudrun.com
 # 域名关键字匹配
 DOMAIN-KEYWORD, koyso
 DOMAIN-KEYWORD,v2ex
-DOMAIN-KEYWORD,erebras.ai
+DOMAIN-KEYWORD,cerebras.ai
 
 # IP匹配
 
