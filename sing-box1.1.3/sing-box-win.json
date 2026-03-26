@@ -18,12 +18,13 @@
     "timestamp": true
   },
   "dns": {
+    "strategy": "ipv4_only",
     "servers": [
       {
         "tag": "proxy_dns",
         "type": "https",
         "server": "8.8.8.8",
-        "detour": "Default"
+        "detour": "🚀 Default"
       },
       {
         "tag": "cn_dns",
@@ -33,8 +34,7 @@
       {
         "tag": "fake_dns",
         "type": "fakeip",
-        "inet4_range": "198.18.0.0/15",
-        "inet6_range": "fc00::/18"
+        "inet4_range": "198.18.0.0/15"
       }
     ],
     "rules": [
@@ -51,10 +51,15 @@
         "mode": "or",
         "rules": [
           {
-            "domain_suffix": [".cn"]
+            "domain_suffix": [
+              ".cn"
+            ]
           },
           {
-            "domain_keyword": ["stun", "turn"]
+            "domain_keyword": [
+              "stun",
+              "turn"
+            ]
           },
           {
             "rule_set": "cnsite"
@@ -63,7 +68,10 @@
         "server": "cn_dns"
       },
       {
-        "query_type": ["A", "AAAA"],
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
         "server": "fake_dns",
         "rewrite_ttl": 1
       }
@@ -74,17 +82,28 @@
       "type": "tun",
       "tag": "tun-in",
       "interface_name": "singbox_tun",
-      "address": ["172.18.0.1/30", "fdfe:dcba:9876::1/126"],
+      "address": [
+        "172.18.0.1/30"
+      ],
       "mtu": 9000,
       "auto_route": true,
-      "route_exclude_address": ["10.0.0.0/8", "100.64.0.0/10", "169.254.0.0/16", "172.16.0.0/12", "192.0.0.0/24", "192.168.0.0/16"],
-      "route_exclude_address_set": ["cnip"],
+      "route_exclude_address": [
+        "10.0.0.0/8",
+        "100.64.0.0/10",
+        "169.254.0.0/16",
+        "172.16.0.0/12",
+        "192.0.0.0/24",
+        "192.168.0.0/16"
+      ],
+      "route_exclude_address_set": [
+        "cnip"
+      ],
       "strict_route": true,
       "endpoint_independent_nat": false,
       "stack": "mixed"
     },
     {
-      "type": "mixed"，
+      "type": "mixed",
       "tag": "mixed-in",
       "listen": "0.0.0.0",
       "listen_port": 7890
@@ -94,7 +113,9 @@
     {
       "type": "selector",
       "tag": "🚀 Default",
-      "outbounds": ["♻️ Auto"]
+      "outbounds": [
+        "♻️ Auto"
+      ]
     },
     {
       "type": "urltest",
@@ -106,42 +127,66 @@
     {
       "type": "selector",
       "tag": "🛤️ Relay",
-      "outbounds": ["🎯 Direct-Out"]
+      "outbounds": [
+        "🎯 Direct-Out"
+      ]
     },
     {
       "type": "selector",
       "tag": "💳 PayPal",
-      "outbounds": ["🚀 Default", "♻️ Auto"]
+      "outbounds": [
+        "🚀 Default",
+        "♻️ Auto"
+      ]
     },
     {
       "type": "selector",
       "tag": "🤖 AI-Service",
-      "outbounds": ["🚀 Default", "♻️ Auto"]
+      "outbounds": [
+        "🚀 Default",
+        "♻️ Auto"
+      ]
     },
     {
       "type": "selector",
       "tag": "🎵 TikTok",
-      "outbounds": ["🚀 Default", "♻️ Auto"]
+      "outbounds": [
+        "🚀 Default",
+        "♻️ Auto"
+      ]
     },
     {
       "type": "selector",
       "tag": "📺 Streaming-Media",
-      "outbounds": ["🚀 Default", "♻️ Auto"]
+      "outbounds": [
+        "🚀 Default",
+        "♻️ Auto"
+      ]
     },
     {
       "type": "selector",
       "tag": "✈️ Telegram",
-      "outbounds": ["🚀 Default", "♻️ Auto"]
+      "outbounds": [
+        "🚀 Default",
+        "♻️ Auto"
+      ]
     },
     {
       "type": "selector",
       "tag": "📷 Instagram",
-      "outbounds": ["🚀 Default", "♻️ Auto"]
+      "outbounds": [
+        "🚀 Default",
+        "♻️ Auto"
+      ]
     },
     {
       "type": "selector",
       "tag": "🎬diy",
-      "outbounds": ["🚀 Default", "♻️ Auto", "🎯 Direct-Out"]
+      "outbounds": [
+        "🚀 Default",
+        "♻️ Auto",
+        "🎯 Direct-Out"
+      ]
     },
     {
       "type": "direct",
@@ -279,7 +324,7 @@
         "update_interval": "24h",
         "download_detour": "🚀 Default"
       },
-	  {
+      {
         "tag": "dl",
         "type": "remote",
         "format": "binary",
@@ -289,6 +334,48 @@
       }
     ],
     "rules": [
+      {
+        "domain_suffix": [
+          "qichiyu.com",
+          "lij.us.kg",
+          "dpdns.org",
+          "clawcloudrun.com",
+          "oplist.org",
+          "phncdn.com"
+        ],
+        "outbound": "🚀 Default"
+      },
+      {
+        "domain_keyword": [
+          "koyso",
+          "v2ex",
+          "cerebras.ai"
+        ],
+        "outbound": "🚀 Default"
+      },
+      {
+        "domain_suffix": [
+          "tailscale.com",
+          "teracloud.jp",
+          "steamcontent.com",
+          "shine-optics.com"
+        ],
+        "outbound": "🎯 Direct-Out"
+      },
+      {
+        "ip_cidr": [
+          "100.64.0.0/10",
+          "43.245.48.50/32",
+          "208.111.40.12/32",
+          "54.161.152.147/32",
+          "3.125.149.81/32",
+          "205.147.105.30/32",
+          "103.84.155.188/32",
+          "106.72.25.198/32",
+          "72.18.83.66/32"
+        ],
+        "outbound": "🎯 Direct-Out"
+      },
       {
         "port": 443,
         "network": "udp",
@@ -335,14 +422,17 @@
         "outbound": "🎯 Direct-Out"
       },
       {
-        "port": [3478, 41641],
+        "port": [
+          3478,
+          41641
+        ],
         "outbound": "🎯 Direct-Out"
       },
-     {
+      {
         "rule_set": "zl",
         "outbound": "🎬diy"
       },
-	  {
+      {
         "rule_set": "dl",
         "outbound": "🚀 Default"
       },
@@ -371,7 +461,12 @@
         "outbound": "📺 Streaming-Media"
       },
       {
-        "rule_set": ["netflixsite", "hbo", "disney", "hulu"],
+        "rule_set": [
+          "netflixsite",
+          "hbo",
+          "disney",
+          "hulu"
+        ],
         "outbound": "📺 Streaming-Media"
       },
       {
