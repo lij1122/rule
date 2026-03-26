@@ -22,9 +22,8 @@
       {
         "tag": "proxy_dns",
         "type": "https",
-        "server": "dns.google",
-        "address": "8.8.8.8",
-        "detour": "🚀 Default"
+        "server": "8.8.8.8",
+        "detour": "Default"
       },
       {
         "tag": "cn_dns",
@@ -85,7 +84,7 @@
       "stack": "mixed"
     },
     {
-      "type": "mixed",
+      "type": "mixed"，
       "tag": "mixed-in",
       "listen": "0.0.0.0",
       "listen_port": 7890
