@@ -52,7 +52,7 @@
         "mode": "or",
         "rules": [
           {
-            "domain_suffix": ["ileidian.com", ".cn"]
+            "domain_suffix": [".cn"]
           },
           {
             "domain_keyword": ["stun", "turn"]
@@ -279,7 +279,7 @@
         "url": "https://raw.githubusercontent.com/lij1122/sing-box-geosite/refs/heads/main/rule/direct.srs",
         "update_interval": "24h",
         "download_detour": "🚀 Default"
-      }
+      },
 	  {
         "tag": "dl",
         "type": "remote",
@@ -341,7 +341,7 @@
       },
      {
         "rule_set": "zl",
-        "outbound": "🎬 diy"
+        "outbound": "🎬diy"
       },
 	  {
         "rule_set": "dl",
