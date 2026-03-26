@@ -280,6 +280,14 @@
         "update_interval": "24h",
         "download_detour": "🚀 Default"
       }
+	  {
+        "tag": "dl",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/lij1122/sing-box-geosite/refs/heads/main/rule/proxy.srs",
+        "update_interval": "24h",
+        "download_detour": "🚀 Default"
+      }
     ],
     "rules": [
       {
@@ -328,12 +336,16 @@
         "outbound": "🎯 Direct-Out"
       },
       {
-        "port": [3478, 5201],
+        "port": [3478, 41641],
         "outbound": "🎯 Direct-Out"
       },
      {
         "rule_set": "zl",
         "outbound": "🎬 diy"
+      },
+	  {
+        "rule_set": "dl",
+        "outbound": "🚀 Default"
       },
       {
         "rule_set": "paypal",
