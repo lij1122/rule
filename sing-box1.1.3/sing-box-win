@@ -209,7 +209,7 @@
         "download_detour": "🚀 Default"
       },
       {
-        "tag": "📷 Instagram",
+        "tag": "Instagram",
         "type": "remote",
         "format": "binary",
         "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/instagram.srs",
@@ -360,7 +360,7 @@
         "outbound": "🎵 TikTok"
       },
       {
-        "rule_set": "📷 Instagram",
+        "rule_set": "Instagram",
         "outbound": "📷 Instagram"
       },
       {
