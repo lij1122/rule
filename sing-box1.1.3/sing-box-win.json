@@ -135,7 +135,7 @@
         ],
         "server": "cn_dns"
       }
-    ],
+    ]，
     "final": "proxy_dns",
     "disable_cache": true,
     "strategy": "ipv4_only"
@@ -238,7 +238,7 @@
           {
             "network": "udp"
           }
-        ],
+        ]，
         "action": "reject"
       },
       {
@@ -357,7 +357,7 @@
       "state_directory": "./tailscale-state",
       "auth_key": "",
       "accept_routes": true,
-      "exit_node": "100.80.0.1",
+      "exit_node": "",
       "exit_node_allow_lan_access": true
     }
   ],
