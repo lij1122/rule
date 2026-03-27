@@ -9,7 +9,7 @@
     "lij.us.kg",
     "dpdns.org"
     ],
-    "outbound": "🚀 Default"
+    "outbound": "Default"
   },
   {
     "ip_cidr": [
@@ -22,6 +22,6 @@
     "103.84.155.188/32",
     "106.72.25.198/32"
     ],
-    "outbound": "📽️ diy"
+    "outbound": "Direct-Out"
       }
 ]
