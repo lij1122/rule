@@ -59,7 +59,7 @@
         "type": "https",
         "server": "8.8.8.8",
         "detour": "Instagram"
-      },
+      }，
       {
         "tag": "emby_dns",
         "type": "https",
@@ -67,7 +67,7 @@
         "detour": "Emby"
       },
       {
-        "tag": "cn_dns"，
+        "tag": "cn_dns",
         "type": "udp",
         "server": "119.29.29.29"
       }
