@@ -84,7 +84,7 @@
       {
         "rule_set": "paypal",
         "server": "paypal_dns"
-      },
+      }，
       {
         "rule_set": "aiservice",
         "server": "ai_dns"
@@ -222,7 +222,7 @@
       "type": "direct",
       "tag": "Direct-Out"
     }
-  ]，
+  ],
   "route": {
     "final": "Default",
     "auto_detect_interface": true,
