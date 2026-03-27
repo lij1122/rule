@@ -165,7 +165,7 @@
       "type": "selector",
       "tag": "Default",
       "outbounds": ["Auto"]
-    },
+    }，
     {
       "type": "urltest",
       "tag": "Auto",
@@ -217,7 +217,7 @@
       "type": "selector",
       "tag": "BiliBili",
       "outbounds": ["Direct-Out", "Default", "Auto"]
-    },
+    }，
     {
       "type": "direct",
       "tag": "Direct-Out"
@@ -355,7 +355,7 @@
       "type": "tailscale",
       "tag": "ts-ep",
       "state_directory": "./tailscale-state",
-      "auth_key": "tskey-auth-kbNWYFgNR811CNTRL-f2AR6vqWvnc1KpsqipJEhcKVBevLtJaCV",
+      "auth_key": "",
       "accept_routes": true,
       "exit_node": "100.80.0.1",
       "exit_node_allow_lan_access": true
