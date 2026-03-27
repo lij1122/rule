@@ -139,7 +139,7 @@
         ],
         "server": "cn_dns"
       }
-    ]，
+    ],
     "final": "proxy_dns",
     "disable_cache": true,
     "strategy": "ipv4_only"
