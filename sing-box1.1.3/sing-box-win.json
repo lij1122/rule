@@ -139,7 +139,7 @@
         ],
         "server": "cn_dns"
       }
-    ],
+    ]，
     "final": "proxy_dns",
     "disable_cache": true,
     "strategy": "ipv4_only"
@@ -302,7 +302,7 @@
       {
         "domain_suffix": ["ottiptv.cc"],
         "outbound": "Direct-Out"
-      },
+      }，
       {
         "domain_suffix": ["uhdnow.com"],
         "outbound": "Emby"
@@ -489,7 +489,7 @@
         "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/bilibili.srs",
         "update_interval": "24h",
         "download_detour": "Default"
-      }，
+      },
       {
         "tag": "emby",
         "type": "remote",
