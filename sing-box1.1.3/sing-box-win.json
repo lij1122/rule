@@ -80,11 +80,11 @@
       {
         "clash_mode": "global",
         "server": "proxy_dns"
-      }，
+      },
       {
         "rule_set": "paypal",
         "server": "paypal_dns"
-      }，
+      },
       {
         "rule_set": "aiservice",
         "server": "ai_dns"
