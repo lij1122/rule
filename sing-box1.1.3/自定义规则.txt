@@ -1,6 +1,6 @@
 [
   {
-    "port": [22,41641]
+    "port": 22
     "outbound": "Direct-Out"
   },
   {
