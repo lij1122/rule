@@ -5,7 +5,7 @@
       "external_ui": "ui",
       "secret": "",
       "external_ui_download_url": "https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip",
-      "external_ui_download_detour": "🚀 Default",
+      "external_ui_download_detour": "Default",
       "default_mode": "rule"
     },
     "cache_file": {
@@ -18,23 +18,23 @@
     "timestamp": true
   },
   "dns": {
-    "strategy": "ipv4_only",
     "servers": [
       {
         "tag": "proxy_dns",
         "type": "https",
         "server": "8.8.8.8",
-        "detour": "🚀 Default"
+        "detour": "Default"
       },
       {
         "tag": "cn_dns",
         "type": "udp",
-        "server": "223.5.5.5"
+        "server": "114.114.114.114"
       },
       {
         "tag": "fake_dns",
         "type": "fakeip",
-        "inet4_range": "198.18.0.0/15"
+        "inet4_range": "11.0.0.0/16",
+        "inet6_range": "3ffe::/16"
       }
     ],
     "rules": [
@@ -51,15 +51,10 @@
         "mode": "or",
         "rules": [
           {
-            "domain_suffix": [
-              ".cn"
-            ]
+            "domain_suffix": ["ileidian.com", ".cn"]
           },
           {
-            "domain_keyword": [
-              "stun",
-              "turn"
-            ]
+            "domain_keyword": ["stun", "turn"]
           },
           {
             "rule_set": "cnsite"
@@ -68,10 +63,7 @@
         "server": "cn_dns"
       },
       {
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
+        "query_type": ["A", "AAAA"],
         "server": "fake_dns",
         "rewrite_ttl": 1
       }
@@ -82,119 +74,83 @@
       "type": "tun",
       "tag": "tun-in",
       "interface_name": "singbox_tun",
-      "address": [
-        "172.18.0.1/30"
-      ],
+      "address": ["172.18.0.1/30", "fdfe:dcba:9876::1/126"],
       "mtu": 9000,
       "auto_route": true,
-      "route_exclude_address": [
-        "10.0.0.0/8",
-        "100.64.0.0/10",
-        "169.254.0.0/16",
-        "172.16.0.0/12",
-        "192.0.0.0/24",
-        "192.168.0.0/16"
-      ],
-      "route_exclude_address_set": [
-        "cnip"
-      ],
+      "route_exclude_address": ["10.0.0.0/8", "100.64.0.0/10", "169.254.0.0/16", "172.16.0.0/12", "192.0.0.0/24", "192.168.0.0/16"],
+      "route_exclude_address_set": ["cnip"],
       "strict_route": true,
       "endpoint_independent_nat": false,
-      "stack": "mixed"
+      "stack": "mixed",
+      "auto_redirect": true
     },
     {
       "type": "mixed",
       "tag": "mixed-in",
-      "listen": "0.0.0.0",
+      "listen": "127.0.0.1",
       "listen_port": 7890
     }
   ],
   "outbounds": [
     {
       "type": "selector",
-      "tag": "🚀 Default",
-      "outbounds": [
-        "♻️ Auto"
-      ]
+      "tag": "Default",
+      "outbounds": ["Auto"]
     },
     {
       "type": "urltest",
-      "tag": "♻️ Auto",
+      "tag": "Auto",
       "outbounds": [],
       "interval": "3m",
       "tolerance": 30
     },
     {
       "type": "selector",
-      "tag": "🛤️ Relay",
-      "outbounds": [
-        "🎯 Direct-Out"
-      ]
+      "tag": "Relay",
+      "outbounds": ["Direct-Out"]
     },
     {
       "type": "selector",
-      "tag": "💳 PayPal",
-      "outbounds": [
-        "🚀 Default",
-        "♻️ Auto"
-      ]
+      "tag": "PayPal",
+      "outbounds": ["Default", "Auto"]
     },
     {
       "type": "selector",
-      "tag": "🤖 AI-Service",
-      "outbounds": [
-        "🚀 Default",
-        "♻️ Auto"
-      ]
+      "tag": "AI-Service",
+      "outbounds": ["Default", "Auto"]
     },
     {
       "type": "selector",
-      "tag": "🎵 TikTok",
-      "outbounds": [
-        "🚀 Default",
-        "♻️ Auto"
-      ]
+      "tag": "TikTok",
+      "outbounds": ["Default", "Auto"]
     },
     {
       "type": "selector",
-      "tag": "📺 Streaming-Media",
-      "outbounds": [
-        "🚀 Default",
-        "♻️ Auto"
-      ]
+      "tag": "Streaming-Media",
+      "outbounds": ["Default", "Auto"]
     },
     {
       "type": "selector",
-      "tag": "✈️ Telegram",
-      "outbounds": [
-        "🚀 Default",
-        "♻️ Auto"
-      ]
+      "tag": "Telegram",
+      "outbounds": ["Default", "Auto"]
     },
     {
       "type": "selector",
-      "tag": "📷 Instagram",
-      "outbounds": [
-        "🚀 Default",
-        "♻️ Auto"
-      ]
+      "tag": "Instagram",
+      "outbounds": ["Default", "Auto"]
     },
     {
       "type": "selector",
-      "tag": "🎬diy",
-      "outbounds": [
-        "🚀 Default",
-        "♻️ Auto",
-        "🎯 Direct-Out"
-      ]
+      "tag": "Emby",
+      "outbounds": ["Default", "Auto", "Direct-Out"]
     },
     {
       "type": "direct",
-      "tag": "🎯 Direct-Out"
+      "tag": "Direct-Out"
     }
   ],
   "route": {
-    "final": "🚀 Default",
+    "final": "Default",
     "auto_detect_interface": true,
     "default_domain_resolver": "cn_dns",
     "rule_set": [
@@ -210,7 +166,7 @@
         "format": "binary",
         "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geoip/cn.srs",
         "update_interval": "24h",
-        "download_detour": "🚀 Default"
+        "download_detour": "Default"
       },
       {
         "tag": "cngames",
@@ -218,7 +174,7 @@
         "format": "binary",
         "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/category-games-!cn@cn.srs",
         "update_interval": "24h",
-        "download_detour": "🚀 Default"
+        "download_detour": "Default"
       },
       {
         "tag": "gfw",
@@ -226,7 +182,7 @@
         "format": "binary",
         "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/gfw.srs",
         "update_interval": "24h",
-        "download_detour": "🚀 Default"
+        "download_detour": "Default"
       },
       {
         "tag": "aiservice",
@@ -234,7 +190,7 @@
         "format": "binary",
         "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/category-ai-!cn.srs",
         "update_interval": "24h",
-        "download_detour": "🚀 Default"
+        "download_detour": "Default"
       },
       {
         "tag": "paypal",
@@ -242,7 +198,7 @@
         "format": "binary",
         "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/paypal.srs",
         "update_interval": "24h",
-        "download_detour": "🚀 Default"
+        "download_detour": "Default"
       },
       {
         "tag": "tiktok",
@@ -250,7 +206,7 @@
         "format": "binary",
         "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/tiktok.srs",
         "update_interval": "24h",
-        "download_detour": "🚀 Default"
+        "download_detour": "Default"
       },
       {
         "tag": "Instagram",
@@ -258,7 +214,7 @@
         "format": "binary",
         "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/instagram.srs",
         "update_interval": "24h",
-        "download_detour": "🚀 Default"
+        "download_detour": "Default"
       },
       {
         "tag": "telegramip",
@@ -266,7 +222,7 @@
         "format": "binary",
         "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geoip/telegram.srs",
         "update_interval": "24h",
-        "download_detour": "🚀 Default"
+        "download_detour": "Default"
       },
       {
         "tag": "telegramsite",
@@ -274,7 +230,7 @@
         "format": "binary",
         "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/telegram.srs",
         "update_interval": "24h",
-        "download_detour": "🚀 Default"
+        "download_detour": "Default"
       },
       {
         "tag": "netflixsite",
@@ -282,7 +238,7 @@
         "format": "binary",
         "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/netflix.srs",
         "update_interval": "24h",
-        "download_detour": "🚀 Default"
+        "download_detour": "Default"
       },
       {
         "tag": "netflixip",
@@ -290,7 +246,7 @@
         "format": "binary",
         "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geoip/netflix.srs",
         "update_interval": "24h",
-        "download_detour": "🚀 Default"
+        "download_detour": "Default"
       },
       {
         "tag": "disney",
@@ -298,7 +254,7 @@
         "format": "binary",
         "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/disney.srs",
         "update_interval": "24h",
-        "download_detour": "🚀 Default"
+        "download_detour": "Default"
       },
       {
         "tag": "hbo",
@@ -306,7 +262,7 @@
         "format": "binary",
         "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/hbo.srs",
         "update_interval": "24h",
-        "download_detour": "🚀 Default"
+        "download_detour": "Default"
       },
       {
         "tag": "hulu",
@@ -314,76 +270,34 @@
         "format": "binary",
         "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/hulu.srs",
         "update_interval": "24h",
-        "download_detour": "🚀 Default"
+        "download_detour": "Default"
       },
       {
-        "tag": "zl",
+        "tag": "emby",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/lij1122/sing-box-geosite/refs/heads/main/rule/direct.srs",
+        "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/category-emby.srs",
         "update_interval": "24h",
-        "download_detour": "🚀 Default"
-      },
-      {
-        "tag": "dl",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/lij1122/sing-box-geosite/refs/heads/main/rule/proxy.srs",
-        "update_interval": "24h",
-        "download_detour": "🚀 Default"
+        "download_detour": "Default"
       }
     ],
     "rules": [
       {
-        "domain_suffix": [
-          "qichiyu.com",
-          "lij.us.kg",
-          "dpdns.org",
-          "clawcloudrun.com",
-          "oplist.org",
-          "phncdn.com"
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+          {
+            "port": 443
+          },
+          {
+            "network": "udp"
+          }
         ],
-        "outbound": "🚀 Default"
-      },
-      {
-        "domain_keyword": [
-          "koyso",
-          "v2ex",
-          "cerebras.ai"
-        ],
-        "outbound": "🚀 Default"
-      },
-      {
-        "domain_suffix": [
-          "tailscale.com",
-          "teracloud.jp",
-          "steamcontent.com",
-          "shine-optics.com"
-        ],
-        "outbound": "🎯 Direct-Out"
-      },
-      {
-        "ip_cidr": [
-          "100.64.0.0/10",
-          "43.245.48.50/32",
-          "208.111.40.12/32",
-          "54.161.152.147/32",
-          "3.125.149.81/32",
-          "205.147.105.30/32",
-          "103.84.155.188/32",
-          "106.72.25.198/32",
-          "72.18.83.66/32"
-        ],
-        "outbound": "🎯 Direct-Out"
-      },
-      {
-        "port": 443,
-        "network": "udp",
         "action": "reject"
       },
       {
         "network": "icmp",
-        "outbound": "🎯 Direct-Out"
+        "outbound": "Direct-Out"
       },
       {
         "action": "sniff"
@@ -403,15 +317,15 @@
       },
       {
         "ip_is_private": true,
-        "outbound": "🎯 Direct-Out"
+        "outbound": "Direct-Out"
       },
       {
         "clash_mode": "direct",
-        "outbound": "🎯 Direct-Out"
+        "outbound": "Direct-Out"
       },
       {
         "clash_mode": "global",
-        "outbound": "🚀 Default"
+        "outbound": "Default"
       },
       {
         "protocol": "quic",
@@ -419,78 +333,74 @@
       },
       {
         "protocol": "bittorrent",
-        "outbound": "🎯 Direct-Out"
+        "outbound": "Direct-Out"
       },
       {
-        "port": [
-          3478,
-          41641
-        ],
-        "outbound": "🎯 Direct-Out"
+        "port": [3478, 5201],
+        "outbound": "Direct-Out"
       },
       {
-        "rule_set": "zl",
-        "outbound": "🎬diy"
+        "domain_suffix": ["ileidian.com", "ottiptv.cc"],
+        "outbound": "Direct-Out"
       },
       {
-        "rule_set": "dl",
-        "outbound": "🚀 Default"
+        "domain_suffix": ["uhdnow.com"],
+        "outbound": "Emby"
+      },
+      {
+        "rule_set": "emby",
+        "outbound": "Emby"
       },
       {
         "rule_set": "paypal",
-        "outbound": "💳 PayPal"
+        "outbound": "PayPal"
       },
       {
         "rule_set": "telegramsite",
-        "outbound": "✈️ Telegram"
+        "outbound": "Telegram"
       },
       {
         "rule_set": "tiktok",
-        "outbound": "🎵 TikTok"
+        "outbound": "TikTok"
       },
       {
         "rule_set": "Instagram",
-        "outbound": "📷 Instagram"
+        "outbound": "Instagram"
       },
       {
         "rule_set": "aiservice",
-        "outbound": "🤖 AI-Service"
+        "outbound": "AI-Service"
       },
       {
         "domain_suffix": "sexlikereal.com",
-        "outbound": "📺 Streaming-Media"
+        "outbound": "Streaming-Media"
       },
       {
-        "rule_set": [
-          "netflixsite",
-          "hbo",
-          "disney",
-          "hulu"
-        ],
-        "outbound": "📺 Streaming-Media"
+        "rule_set": ["netflixsite", "hbo", "disney", "hulu"],
+        "outbound": "Streaming-Media"
       },
       {
         "rule_set": "cngames",
-        "outbound": "🎯 Direct-Out"
+        "outbound": "Direct-Out"
       },
       {
         "rule_set": "gfw",
-        "outbound": "🚀 Default"
+        "outbound": "Default"
       },
       {
         "action": "resolve"
       },
       {
         "rule_set": "telegramip",
-        "outbound": "✈️ Telegram"
+        "outbound": "Telegram"
       },
       {
         "rule_set": "netflixip",
-        "outbound": "📺 Streaming-Media"
+        "outbound": "Streaming-Media"
       },
       {
         "rule_set": "cnip",
-        "outbound": "🎯 Direct-Out"
+        "outbound": "Direct-Out"
       }
     ]
   }
