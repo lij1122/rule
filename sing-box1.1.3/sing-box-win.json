@@ -84,7 +84,7 @@
       {
         "rule_set": "paypal",
         "server": "paypal_dns"
-      },
+      }，
       {
         "rule_set": "aiservice",
         "server": "ai_dns"
@@ -242,6 +242,12 @@
         "action": "reject"
       },
       {
+        "ip_cidr": [
+          "100.64.0.0/10"
+        ],
+        "outbound": "ts-ep"
+      },
+      {
         "network": "icmp",
         "outbound": "Direct-Out"
       },
@@ -315,7 +321,7 @@
       {
         "rule_set": ["netflixsite", "hbo", "disney", "hulu"],
         "outbound": "Streaming-Media"
-      },
+      }，
       {
         "rule_set": "bilibili",
         "outbound": "BiliBili"
@@ -344,6 +350,17 @@
         "outbound": "Direct-Out"
       }
     ],
+    "endpoints": [
+    {
+      "type": "tailscale",
+      "tag": "ts-ep",
+      "state_directory": "./tailscale-state",
+      "auth_key": "tskey-auth-kbNWYFgNR811CNTRL-f2AR6vqWvnc1KpsqipJEhcKVBevLtJaCV",
+      "accept_routes": true,
+      "exit_node": "100.80.0.1",
+      "exit_node_allow_lan_access": true
+    }
+  ],
     "rule_set": [
       {
         "type": "remote",
@@ -382,7 +399,7 @@
         "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/category-ai-!cn.srs",
         "update_interval": "24h",
         "download_detour": "Default"
-      },
+      }，
       {
         "tag": "paypal",
         "type": "remote",
@@ -409,7 +426,7 @@
       },
       {
         "tag": "telegramip",
-        "type": "remote",
+        "type": "remote"，
         "format": "binary",
         "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geoip/telegram.srs",
         "update_interval": "24h",
