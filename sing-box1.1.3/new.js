@@ -1,9 +1,35 @@
-const { name, type } = $arguments;
+const { name, type = "0", rules: rules_file } = $arguments;
 
-// 1. 加载模板
+// 1. 读取模板
 let config = JSON.parse($files[0]);
 
-// 2. 拉取订阅或合集节点
+// 2. 先追加自定义规则（如果传了 rules_file 且能成功读取）
+if (rules_file) {
+  try {
+    let customRulesRaw = await produceArtifact({
+      type: "file",
+      name: rules_file,
+    });
+    if (customRulesRaw) {
+      let customRules = JSON.parse(customRulesRaw);
+      // 找到 clash_mode === "global" 规则索引（不判断 outbound）
+      let idx = config.route.rules.findIndex(r => r.clash_mode === "global");
+      if (idx !== -1) {
+        const existingRulesStr = new Set(config.route.rules.map(r => JSON.stringify(r)));
+        customRules = customRules.filter(r => !existingRulesStr.has(JSON.stringify(r)));
+        config.route.rules.splice(idx + 1, 0, ...customRules);
+      } else {
+        config.route.rules.push(...customRules);
+      }
+    } else {
+      // 文件没找到或为空，什么都不做，安静跳过
+    }
+  } catch (e) {
+    // 解析或其它错误也不抛出，跳过规则插入
+  }
+}
+
+// 3. 拉取订阅或合集节点
 let proxies = await produceArtifact({
   name,
   type: /^1$|col/i.test(type) ? "collection" : "subscription",
@@ -11,43 +37,34 @@ let proxies = await produceArtifact({
   produceType: "internal",
 });
 
-// 3. 去重：过滤掉 tag 冲突的节点
-const existingTags = config.outbounds.map((o) => o.tag);
-proxies = proxies.filter((p) => !existingTags.includes(p.tag));
+// 4. 去重已有节点tag
+const existingTags = config.outbounds.map(o => o.tag);
+proxies = proxies.filter(p => !existingTags.includes(p.tag));
 
-// 4. 添加到 outbounds
+// 5. 添加新节点到 outbounds
 config.outbounds.push(...proxies);
 
-// 5. 获取新节点 tag 列表
-const allTags = proxies.map((p) => p.tag);
+// 6. 准备 tag 列表
+const allTags = proxies.map(p => p.tag);
+const terminalTags = proxies.filter(p => !p.detour).map(p => p.tag);
 
-// 6. 重点适配：改为你模板里实际存在的 10 个策略分组
-const targetGroups = [
-  "🚀 Default",
-  "♻️ Auto",
-  "🛤️ Relay",
-  "💳 PayPal",
-  "🤖 AI-Service",
-  "🎵 TikTok",
-  "📺 Streaming-Media",
-  "✈️ Telegram",
-  "📷 Instagram",
-  "🎬diy"
-];
+// 7. 遍历分组追加节点
+config.outbounds.forEach(group => {
+  if (!Array.isArray(group.outbounds) || group.tag === "Direct-Out") return;
 
-// 7. 遍历把物理节点放入这些分流组
-targetGroups.forEach((groupTag) => {
-  const group = config.outbounds.find((o) => o.tag === groupTag && Array.isArray(o.outbounds));
-  if (!group) return;
-
-  if (allTags.length > 0) {
-    // 数组合并并去重：保留组内原有的占位符（比如 "♻️ Auto"），然后追加全部真实节点
-    group.outbounds = [...new Set([...group.outbounds, ...allTags])];
-  } else if (group.outbounds.length === 0) {
-    // 报错修正点：如果没有获取到任何节点，兜底直连应为你配置中实际存在的 "🎯 Direct-Out"
-    group.outbounds = ["🎯 Direct-Out"];
+  if (group.tag === "Relay") {
+    group.outbounds.push(...terminalTags);
+  } else {
+    group.outbounds.push(...allTags);
   }
 });
 
-// 8. 输出最终配置
+// 8. 分组内去重
+config.outbounds.forEach(group => {
+  if (Array.isArray(group.outbounds)) {
+    group.outbounds = [...new Set(group.outbounds)];
+  }
+});
+
+// 9. 输出最终配置
 $content = JSON.stringify(config, null, 2);
