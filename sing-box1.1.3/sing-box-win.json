@@ -302,7 +302,7 @@
       {
         "domain_suffix": ["ottiptv.cc"],
         "outbound": "Direct-Out"
-      }，
+      },
       {
         "domain_suffix": ["uhdnow.com"],
         "outbound": "Emby"
