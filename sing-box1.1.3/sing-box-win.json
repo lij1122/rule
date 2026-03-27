@@ -74,6 +74,10 @@
     ],
     "rules": [
       {
+        "rule_set": "ads",
+        "action": "reject"
+      },
+      {
         "clash_mode": "direct",
         "server": "cn_dns"
       },
@@ -221,6 +225,10 @@
     {
       "type": "direct",
       "tag": "Direct-Out"
+    },
+    {
+      "type": "block",
+      "tag": "block"
     }
   ],
   "route": {
@@ -262,6 +270,10 @@
           }
         ],
         "action": "hijack-dns"
+      },
+      {
+        "rule_set": "ads",
+        "outbound": "block"
       },
       {
         "ip_is_private": true,
@@ -483,6 +495,14 @@
         "type": "remote",
         "format": "binary",
         "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/category-emby.srs",
+        "update_interval": "24h",
+        "download_detour": "Default"
+      },
+      {
+        "tag": "ads",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/category-ads-all.srs",
         "update_interval": "24h",
         "download_detour": "Default"
       }
