@@ -59,7 +59,7 @@
         "type": "https",
         "server": "8.8.8.8",
         "detour": "Instagram"
-      }，
+      },
       {
         "tag": "emby_dns",
         "type": "https",
