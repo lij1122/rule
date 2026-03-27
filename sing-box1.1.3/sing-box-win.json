@@ -85,7 +85,7 @@
     },
     {
       "type": "mixed",
-      "tag": "mixed-in",
+      "tag": "mixed-in"，
       "listen": "127.0.0.1",
       "listen_port": 7890
     }
@@ -137,7 +137,7 @@
       "type": "selector",
       "tag": "Instagram",
       "outbounds": ["Default", "Auto"]
-    },
+    }，
     {
       "type": "selector",
       "tag": "Emby",
@@ -335,7 +335,7 @@
         "outbound": "Direct-Out"
       },
       {
-        "port": [3478, 5201],
+        "port": [3478, 41641],
         "outbound": "Direct-Out"
       },
       {
