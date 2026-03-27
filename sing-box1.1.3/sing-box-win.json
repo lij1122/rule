@@ -84,7 +84,7 @@
       {
         "rule_set": "paypal",
         "server": "paypal_dns"
-      }，
+      },
       {
         "rule_set": "aiservice",
         "server": "ai_dns"
