@@ -80,11 +80,11 @@
       {
         "clash_mode": "global",
         "server": "proxy_dns"
-      },
+      }，
       {
         "rule_set": "paypal",
         "server": "paypal_dns"
-      },
+      }，
       {
         "rule_set": "aiservice",
         "server": "ai_dns"
@@ -156,7 +156,7 @@
     {
       "type": "mixed",
       "tag": "mixed-in",
-      "listen": "127.0.0.1",
+      "listen": "0.0.0.0",
       "listen_port": 7890
     }
   ],
@@ -234,7 +234,7 @@
         "rules": [
           {
             "port": 443
-          },
+          }，
           {
             "network": "udp"
           }
@@ -287,14 +287,7 @@
         "port": [41641],
         "outbound": "Direct-Out"
       },
-      {
-        "domain_suffix": ["ottiptv.cc"],
-        "outbound": "Direct-Out"
-      },
-      {
-        "domain_suffix": ["uhdnow.com"],
-        "outbound": "Emby"
-      },
+      
       {
         "rule_set": "emby",
         "outbound": "Emby"
