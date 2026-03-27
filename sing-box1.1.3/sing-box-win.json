@@ -489,7 +489,7 @@
         "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/bilibili.srs",
         "update_interval": "24h",
         "download_detour": "Default"
-      },
+      }，
       {
         "tag": "emby",
         "type": "remote",
@@ -502,7 +502,7 @@
         "tag": "ads",
         "type": "remote",
         "format": "binary",
-        "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/sing/geo/geosite/category-ads-all.srs",
+        "url": "https://cdn.jsdelivr.net/gh/senshinya/singbox_ruleset@main/rule/Advertising/Advertising.srs",
         "update_interval": "24h",
         "download_detour": "Default"
       }
