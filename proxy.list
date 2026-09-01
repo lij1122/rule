@@ -2,7 +2,7 @@
 
 # 域名后缀匹配
 DOMAIN-SUFFIX,qichiyu.com
-#DOMAIN-SUFFIX,lij.us.kg
+DOMAIN-SUFFIX,lij.us.kg
 DOMAIN-SUFFIX,dpdns.org
 DOMAIN-SUFFIX,clawcloudrun.com
 DOMAIN-SUFFIX,oplist.org
